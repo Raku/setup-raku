@@ -20,7 +20,7 @@
     "raku",
     "setup"
   ],
-  "author": "Shoichi Kaji",
+  "author": "Raku community",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.2",

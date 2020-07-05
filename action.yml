@@ -1,6 +1,6 @@
 name: 'Setup Raku environment'
 description: 'Setup a Raku environment'
-author: 'Shoichi Kaji'
+author: 'Raku community'
 inputs:
   raku-version:
     description: 'Version to use. Examples: 2020.06, 2020.05.1, latest'

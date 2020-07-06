@@ -61,7 +61,7 @@ export async function getRaku(
   const release = await getRelease(version, platform, arch);
   if (release === null) {
     throw new Error(
-      `Faild to find rakudo for version "${version}" and platform "${platform}"`
+      `Failed to find rakudo for version "${version}" and platform "${platform}"`
     );
   }
 
@@ -77,11 +77,11 @@ export async function getRaku(
     extPath = await toolCache.extractTar(downloadPath);
   }
 
-  const versionWtihBuildRev = `${release.ver}-0${release.build_rev}`;
+  const versionWithBuildRev = `${release.ver}-0${release.build_rev}`;
   const toolPath = await toolCache.cacheDir(
     path.join(extPath, `rakudo-${release.ver}`),
     "rakudo",
-    versionWtihBuildRev,
+    versionWithBuildRev,
     arch
   );
   core.info(`Successfully installed rakudo into ${toolPath}`);

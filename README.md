@@ -1,8 +1,25 @@
-# setup raku [![](https://github.com/skaji/setup-raku/workflows/test/badge.svg)](https://github.com/skaji/setup-raku/actions)
+# setup raku [![](https://github.com/Raku/setup-raku/workflows/test/badge.svg)](https://github.com/Raku/setup-raku/actions)
 
 This action sets up a Raku environment for use in [GitHub Actions](https://docs.github.com/en/actions).
 
 # Usage
+
+See [action.yml](action.yml) for the details.
+
+Basic:
+
+```yaml
+jobs:
+  raku:
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Raku/setup-raku@v1  # By default, this sets up the latest rakudo
+      - run: raku -v
+```
+
+Matrix:
 
 ```yaml
 jobs:
@@ -23,11 +40,10 @@ jobs:
       - ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      - uses: skaji/setup-raku@master
+      - uses: Raku/setup-raku@master
         with:
           raku-version: ${{ matrix.raku-version }}
-      - name: raku -V
-        run: raku -V
+      - run: raku -v
 ```
 
 # License

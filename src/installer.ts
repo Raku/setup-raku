@@ -57,7 +57,7 @@ export async function getRaku(
   version: string,
   platform: "win" | "macos" | "linux",
   arch: "x86_64"
-) {
+): Promise<void> {
   const release = await getRelease(version, platform, arch);
   if (release === null) {
     throw new Error(

@@ -11,8 +11,7 @@ Basic:
 ```yaml
 jobs:
   raku:
-    runs-on:
-      - ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: Raku/setup-raku@v1  # By default, this sets up the latest rakudo
@@ -36,11 +35,10 @@ jobs:
           - "2020.02.1"
           - "2020.01"
           - "2019.11"
-    runs-on:
-      - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      - uses: Raku/setup-raku@master
+      - uses: Raku/setup-raku@v1
         with:
           raku-version: ${{ matrix.raku-version }}
       - run: raku -v

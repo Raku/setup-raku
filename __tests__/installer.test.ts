@@ -34,8 +34,10 @@ describe("installer", () => {
   it("gets latest", async () => {
     const macos = await installer.getRelease("latest", "macos", "x86_64");
     const linux = await installer.getRelease("latest", "linux", "x86_64");
+    const win = await installer.getRelease("latest", "win", "x86_64");
     expect(macos).toBeDefined();
     expect(linux).toBeDefined();
+    expect(win).toBeDefined();
   });
   it("gets 2020.02.1 build rev 2 for win release", async () => {
     const win = await installer.getRelease("2020.02.1", "win", "x86_64");

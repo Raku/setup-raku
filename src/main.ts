@@ -2,7 +2,7 @@ import * as core from "@actions/core";
 import * as installer from "./installer";
 import * as os from "os";
 
-export async function run() {
+export async function run(): Promise<void> {
   try {
     const version = core.getInput("raku-version") || "latest";
     const platform =

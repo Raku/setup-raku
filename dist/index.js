@@ -4806,15 +4806,16 @@ exports.getAllReleases = getAllReleases;
 function getRelease(version, platform, arch) {
     return __awaiter(this, void 0, void 0, function* () {
         const releases = (yield getAllReleases())
-            .filter(r => {
-            return (r.arch === arch &&
-                r.type === "archive" &&
-                r.backend === "moar" &&
-                r.platform === platform &&
-                (version === "latest" ? r.latest === 1 : r.ver === version));
-        })
+            .filter(r => r.arch === arch &&
+            r.type === "archive" &&
+            r.backend === "moar" &&
+            r.platform === platform &&
+            (version === "latest" ? true : r.ver === version))
             .sort((r1, r2) => {
-            if (r2.build_rev === null && r1.build_rev === null) {
+            if (r1.ver !== r2.ver) {
+                return r1.ver < r2.ver ? 1 : -1;
+            }
+            else if (r2.build_rev === null && r1.build_rev === null) {
                 return 0;
             }
             else if (r1.build_rev === null) {

@@ -4856,6 +4856,7 @@ const core = __importStar(__webpack_require__(470));
 const http = __importStar(__webpack_require__(539));
 const path = __importStar(__webpack_require__(622));
 const toolCache = __importStar(__webpack_require__(533));
+const fs_1 = __webpack_require__(747);
 function getAllReleases() {
     return __awaiter(this, void 0, void 0, function* () {
         const client = new http.HttpClient("setup-raku", [], {
@@ -4904,7 +4905,8 @@ function getRaku(version, platform, arch) {
             throw new Error(`Failed to find rakudo for version "${version}" and platform "${platform}"`);
         }
         const url = release.url;
-        core.info(`Downloading rakudo ${version} from ${url}`);
+        const ver = release.ver;
+        core.info(`Downloading rakudo ${ver} from ${url}`);
         const downloadPath = yield toolCache.downloadTool(url);
         core.info("Extracting archive");
         let extPath;
@@ -4914,8 +4916,12 @@ function getRaku(version, platform, arch) {
         else {
             extPath = yield toolCache.extractTar(downloadPath);
         }
-        const versionWithBuildRev = `${release.ver}-0${release.build_rev}`;
-        const toolPath = yield toolCache.cacheDir(path.join(extPath, `rakudo-${release.ver}`), "rakudo", versionWithBuildRev, arch);
+        let dirname = (url.split("/").pop() || "").replace(/\.(tar\.gz|zip)$/, "");
+        yield fs_1.promises.access(path.join(extPath, dirname)).catch(() => {
+            dirname = `rakudo-${ver}`;
+        });
+        const versionWithBuildRev = `${ver}-0${release.build_rev}`;
+        const toolPath = yield toolCache.cacheDir(path.join(extPath, dirname), "rakudo", versionWithBuildRev, arch);
         core.info(`Successfully installed rakudo into ${toolPath}`);
         core.addPath(path.join(toolPath, "bin"));
         core.addPath(path.join(toolPath, "share", "perl6", "site", "bin"));

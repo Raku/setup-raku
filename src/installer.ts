@@ -2,6 +2,7 @@ import * as core from "@actions/core";
 import * as http from "@actions/http-client";
 import * as path from "path";
 import * as toolCache from "@actions/tool-cache";
+import { promises as fs } from "fs";
 
 export interface Release {
   arch: string;
@@ -78,9 +79,14 @@ export async function getRaku(
     extPath = await toolCache.extractTar(downloadPath);
   }
 
+  let dirname = (url.split("/").pop() || "").replace(/\.(tar\.gz|zip)$/, "");
+  await fs.access(path.join(extPath, dirname)).catch(() => {
+    dirname = `rakudo-${release.ver}`;
+  });
+
   const versionWithBuildRev = `${release.ver}-0${release.build_rev}`;
   const toolPath = await toolCache.cacheDir(
-    path.join(extPath, `rakudo-${release.ver}`),
+    path.join(extPath, dirname),
     "rakudo",
     versionWithBuildRev,
     arch

@@ -57,4 +57,16 @@ describe("installer", () => {
     );
     expect(() => fs.statSync(raku)).not.toThrow();
   });
+  it("installs 2020.11 rakudo", async () => {
+    await installer.getRaku("2020.11", "linux", "x86_64");
+    const raku = path.join(
+      toolDir,
+      "rakudo",
+      "2020.11-01",
+      "x86_64",
+      "bin",
+      "raku"
+    );
+    expect(() => fs.statSync(raku)).not.toThrow();
+  });
 });

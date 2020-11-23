@@ -68,7 +68,8 @@ export async function getRaku(
   }
 
   const url = release.url;
-  core.info(`Downloading rakudo ${version} from ${url}`);
+  const ver = release.ver;
+  core.info(`Downloading rakudo ${ver} from ${url}`);
   const downloadPath = await toolCache.downloadTool(url);
 
   core.info("Extracting archive");
@@ -81,10 +82,10 @@ export async function getRaku(
 
   let dirname = (url.split("/").pop() || "").replace(/\.(tar\.gz|zip)$/, "");
   await fs.access(path.join(extPath, dirname)).catch(() => {
-    dirname = `rakudo-${release.ver}`;
+    dirname = `rakudo-${ver}`;
   });
 
-  const versionWithBuildRev = `${release.ver}-0${release.build_rev}`;
+  const versionWithBuildRev = `${ver}-0${release.build_rev}`;
   const toolPath = await toolCache.cacheDir(
     path.join(extPath, dirname),
     "rakudo",

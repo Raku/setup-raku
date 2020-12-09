@@ -1453,6 +1453,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
+const exec = __importStar(__webpack_require__(986));
 const installer = __importStar(__webpack_require__(749));
 const os = __importStar(__webpack_require__(87));
 function run() {
@@ -1465,6 +1466,9 @@ function run() {
                     ? "win"
                     : "linux";
             yield installer.getRaku(version, platform, "x86_64");
+            core.startGroup("raku -V");
+            yield exec.exec("raku", ["-V"]);
+            core.endGroup();
         }
         catch (error) {
             core.setFailed(error.message);

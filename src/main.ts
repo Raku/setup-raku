@@ -1,4 +1,5 @@
 import * as core from "@actions/core";
+import * as exec from "@actions/exec";
 import * as installer from "./installer";
 import * as os from "os";
 
@@ -12,6 +13,10 @@ export async function run(): Promise<void> {
         ? "win"
         : "linux";
     await installer.getRaku(version, platform, "x86_64");
+
+    core.startGroup("raku -V");
+    await exec.exec("raku", ["-V"]);
+    core.endGroup();
   } catch (error) {
     core.setFailed(error.message);
   }

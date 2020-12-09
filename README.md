@@ -15,7 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: Raku/setup-raku@v1  # By default, this sets up the latest rakudo
-      - run: raku -v
 ```
 
 Matrix:
@@ -41,7 +40,6 @@ jobs:
       - uses: Raku/setup-raku@v1
         with:
           raku-version: ${{ matrix.raku-version }}
-      - run: raku -v
 ```
 
 # License

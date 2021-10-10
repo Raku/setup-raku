@@ -42,6 +42,16 @@ jobs:
           raku-version: ${{ matrix.raku-version }}
 ```
 
+# FAQ
+
+## What raku-versions are available?
+
+Try this command:
+
+```console
+curl -s https://rakudo.org/dl/rakudo | jq -r '. [] | select( .platform != "src" ) | .ver' | sort -r | uniq
+```
+
 # License
 
 MIT

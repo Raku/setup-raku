@@ -49,7 +49,7 @@ function getAllReleases() {
     return __awaiter(this, void 0, void 0, function* () {
         const client = new http.HttpClient("setup-raku", [], {
             allowRetries: true,
-            maxRetries: 3
+            maxRetries: 3,
         });
         const url = "https://rakudo.org/dl/rakudo";
         const res = yield client.getJson(url);
@@ -60,7 +60,7 @@ exports.getAllReleases = getAllReleases;
 function getRelease(version, platform, arch) {
     return __awaiter(this, void 0, void 0, function* () {
         const releases = (yield getAllReleases())
-            .filter(r => r.arch === arch &&
+            .filter((r) => r.arch === arch &&
             r.type === "archive" &&
             r.backend === "moar" &&
             r.platform === platform &&

@@ -18,7 +18,7 @@ export interface Release {
 export async function getAllReleases(): Promise<Release[]> {
   const client = new http.HttpClient("setup-raku", [], {
     allowRetries: true,
-    maxRetries: 3
+    maxRetries: 3,
   });
   const url = "https://rakudo.org/dl/rakudo";
   const res = await client.getJson<Release[]>(url);
@@ -32,7 +32,7 @@ export async function getRelease(
 ): Promise<Release | null> {
   const releases = (await getAllReleases())
     .filter(
-      r =>
+      (r) =>
         r.arch === arch &&
         r.type === "archive" &&
         r.backend === "moar" &&

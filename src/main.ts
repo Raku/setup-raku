@@ -17,7 +17,7 @@ export async function run(): Promise<void> {
     core.startGroup("raku -V");
     await exec.exec("raku", ["-V"]);
     core.endGroup();
-  } catch (error) {
+  } catch (error: any) {
     core.setFailed(error.message);
   }
 }

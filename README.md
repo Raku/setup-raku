@@ -13,7 +13,7 @@ jobs:
   raku:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: Raku/setup-raku@v1  # By default, this sets up the latest rakudo
 ```
 
@@ -36,7 +36,7 @@ jobs:
           - "2019.11"
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: Raku/setup-raku@v1
         with:
           raku-version: ${{ matrix.raku-version }}

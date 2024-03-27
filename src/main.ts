@@ -12,7 +12,8 @@ export async function run(): Promise<void> {
         : os.platform() === "win32"
         ? "win"
         : "linux";
-    await installer.getRaku(version, platform, "x86_64");
+    const arch = os.arch() === "arm64" ? "arm64" : "x86_64";
+    await installer.getRaku(version, platform, arch);
 
     core.startGroup("raku -V");
     await exec.exec("raku", ["-V"]);

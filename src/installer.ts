@@ -28,7 +28,7 @@ export async function getAllReleases(): Promise<Release[]> {
 export async function getRelease(
   version: string,
   platform: "win" | "macos" | "linux",
-  arch: "x86_64"
+  arch: "x86_64" | "arm64"
 ): Promise<Release | null> {
   const releases = (await getAllReleases())
     .filter(
@@ -58,7 +58,7 @@ export async function getRelease(
 export async function getRaku(
   version: string,
   platform: "win" | "macos" | "linux",
-  arch: "x86_64"
+  arch: "x86_64" | "arm64"
 ): Promise<void> {
   const release = await getRelease(version, platform, arch);
   if (release === null) {

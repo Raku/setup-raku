@@ -172,7 +172,8 @@ function run() {
                 : os.platform() === "win32"
                     ? "win"
                     : "linux";
-            yield installer.getRaku(version, platform, "x86_64");
+            const arch = os.arch() === "arm64" ? "arm64" : "x86_64";
+            yield installer.getRaku(version, platform, arch);
             core.startGroup("raku -V");
             yield exec.exec("raku", ["-V"]);
             core.endGroup();

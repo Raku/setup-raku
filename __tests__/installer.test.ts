@@ -25,9 +25,11 @@ describe("installer", () => {
   jest.setTimeout(30 * 1000); // 30sec
   it("gets latest", async () => {
     const macos = await installer.getRelease("latest", "macos", "x86_64");
+    const macos2 = await installer.getRelease("latest", "macos", "arm64");
     const linux = await installer.getRelease("latest", "linux", "x86_64");
     const win = await installer.getRelease("latest", "win", "x86_64");
     expect(macos).toBeDefined();
+    expect(macos2).toBeDefined();
     expect(linux).toBeDefined();
     expect(win).toBeDefined();
   });

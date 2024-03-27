@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.8.0 - 2024-03-27
+
+* Support macos arm64 (https://github.com/Raku/setup-raku/pull/34)
+
 ## v1.7.0 - 2023-09-06
 
 * Use node20 (https://github.com/Raku/setup-raku/pull/29)

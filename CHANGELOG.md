@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.9.0 - 2025-04-14
+
+* Update node module dependencies (https://github.com/Raku/setup-raku/pull/40)
+
 ## v1.8.0 - 2024-03-27
 
 * Support macos arm64 (https://github.com/Raku/setup-raku/pull/34)

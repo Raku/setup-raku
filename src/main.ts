@@ -10,8 +10,8 @@ export async function run(): Promise<void> {
       os.platform() === "darwin"
         ? "macos"
         : os.platform() === "win32"
-        ? "win"
-        : "linux";
+          ? "win"
+          : "linux";
     const arch = os.arch() === "arm64" ? "arm64" : "x86_64";
     await installer.getRaku(version, platform, arch);
 

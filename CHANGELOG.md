@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.10.0 - 2025-08-17
+
+* Use node24 (https://github.com/Raku/setup-raku/pull/42)
+
 ## v1.9.0 - 2025-04-14
 
 * Update node module dependencies (https://github.com/Raku/setup-raku/pull/40)

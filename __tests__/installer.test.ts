@@ -6,14 +6,14 @@ const toolDir = path.join(
   __dirname,
   "runner",
   path.join(Math.random().toString(36).substring(7)),
-  "tools"
+  "tools",
 );
 
 const tempDir = path.join(
   __dirname,
   "runner",
   path.join(Math.random().toString(36).substring(7)),
-  "temp"
+  "temp",
 );
 
 process.env["RUNNER_TOOL_CACHE"] = toolDir;
@@ -36,7 +36,7 @@ describe("installer", () => {
   it("gets 2020.02.1 build rev 2 for win release", async () => {
     const win = await installer.getRelease("2020.02.1", "win", "x86_64");
     expect(win?.url).toBe(
-      "https://rakudo.org/dl/rakudo/rakudo-moar-2020.02.1-02-win-x86_64.zip"
+      "https://rakudo.org/dl/rakudo/rakudo-moar-2020.02.1-02-win-x86_64.zip",
     );
   });
   it("installs 2020.06 rakudo", async () => {
@@ -47,7 +47,7 @@ describe("installer", () => {
       "2020.06-01",
       "x86_64",
       "bin",
-      "raku"
+      "raku",
     );
     expect(() => fs.statSync(raku)).not.toThrow();
   });
@@ -59,7 +59,7 @@ describe("installer", () => {
       "2020.11-01",
       "x86_64",
       "bin",
-      "raku"
+      "raku",
     );
     expect(() => fs.statSync(raku)).not.toThrow();
   });

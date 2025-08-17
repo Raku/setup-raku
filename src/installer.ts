@@ -28,7 +28,7 @@ export async function getAllReleases(): Promise<Release[]> {
 export async function getRelease(
   version: string,
   platform: "win" | "macos" | "linux",
-  arch: "x86_64" | "arm64"
+  arch: "x86_64" | "arm64",
 ): Promise<Release | null> {
   const releases = (await getAllReleases())
     .filter(
@@ -37,7 +37,7 @@ export async function getRelease(
         r.type === "archive" &&
         r.backend === "moar" &&
         r.platform === platform &&
-        (version === "latest" ? true : r.ver === version)
+        (version === "latest" ? true : r.ver === version),
     )
     .sort((r1, r2) => {
       if (r1.ver !== r2.ver) {
@@ -58,12 +58,12 @@ export async function getRelease(
 export async function getRaku(
   version: string,
   platform: "win" | "macos" | "linux",
-  arch: "x86_64" | "arm64"
+  arch: "x86_64" | "arm64",
 ): Promise<void> {
   const release = await getRelease(version, platform, arch);
   if (release === null) {
     throw new Error(
-      `Failed to find rakudo for version "${version}" and platform "${platform}"`
+      `Failed to find rakudo for version "${version}" and platform "${platform}"`,
     );
   }
 
@@ -90,7 +90,7 @@ export async function getRaku(
     path.join(extPath, dirname),
     "rakudo",
     versionWithBuildRev,
-    arch
+    arch,
   );
   core.info(`Successfully installed rakudo into ${toolPath}`);
 

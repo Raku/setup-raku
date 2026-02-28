@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "description": "setup raku for github actions",
-  "main": "lib/setup-raku.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && ncc build",
+    "build": "tsc --noEmit && esbuild src/setup-raku.ts --bundle --platform=node --format=cjs --target=node24 --outfile=dist/index.js",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
-    "test": "jest",
+    "test": "vitest run",
     "pre-checkin": "npm run format && npm run build && npm test"
   },
   "repository": {
@@ -23,20 +23,18 @@
   "author": "Raku community",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.11.1",
-    "@actions/exec": "^1.1.1",
-    "@actions/http-client": "^2.2.3",
-    "@actions/io": "^1.1.3",
-    "@actions/tool-cache": "^2.0.2"
+    "@actions/core": "^3.0.0",
+    "@actions/exec": "^3.0.0",
+    "@actions/http-client": "^4.0.0",
+    "@actions/io": "^3.0.2",
+    "@actions/tool-cache": "^4.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
-    "@types/node": "^24.3.0",
-    "@vercel/ncc": "^0.38.3",
-    "jest": "^30.0.5",
-    "prettier": "^3.6.2",
-    "ts-jest": "^29.4.1",
-    "typescript": "^5.9.2"
+    "@types/node": "^24.11.0",
+    "esbuild": "^0.27.3",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   },
   "engines": {
     "node": ">=24"

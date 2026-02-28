@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.11.0 - 2026-02-28
+
+* Modernize toolchain: deps refresh, esbuild + Vitest (https://github.com/Raku/setup-raku/pull/47)
+
 ## v1.10.0 - 2025-08-17
 
 * Use node24 (https://github.com/Raku/setup-raku/pull/42)

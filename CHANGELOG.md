@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.12.0 - 2026-06-07
+
+* Update npm dependencies (https://github.com/Raku/setup-raku/pull/55)
+
 ## v1.11.0 - 2026-02-28
 
 * Modernize toolchain: deps refresh, esbuild + Vitest (https://github.com/Raku/setup-raku/pull/47)

@@ -22475,8 +22475,8 @@ function endGroup() {
   issue("endgroup");
 }
 
-// src/installer.ts
-var path6 = __toESM(require("path"));
+// src/main.ts
+var os7 = __toESM(require("node:os"));
 
 // node_modules/@actions/tool-cache/lib/tool-cache.js
 var crypto = __toESM(require("crypto"), 1);
@@ -22839,7 +22839,8 @@ function _getGlobal(key, defaultValue) {
 }
 
 // src/installer.ts
-var import_fs2 = require("fs");
+var import_node_fs = require("node:fs");
+var path6 = __toESM(require("node:path"));
 async function getAllReleases() {
   const client = new HttpClient("setup-raku", [], {
     allowRetries: true,
@@ -22886,7 +22887,7 @@ async function getRaku(version, platform3, arch4) {
     extPath = await extractTar(downloadPath);
   }
   let dirname4 = (url.split("/").pop() || "").replace(/\.(tar\.gz|zip)$/, "");
-  await import_fs2.promises.access(path6.join(extPath, dirname4)).catch(() => {
+  await import_node_fs.promises.access(path6.join(extPath, dirname4)).catch(() => {
     dirname4 = `rakudo-${ver}`;
   });
   const versionWithBuildRev = `${ver}-0${release.build_rev}`;
@@ -22902,7 +22903,6 @@ async function getRaku(version, platform3, arch4) {
 }
 
 // src/main.ts
-var os7 = __toESM(require("os"));
 async function run() {
   try {
     const version = getInput("raku-version") || "latest";
@@ -22913,7 +22913,7 @@ async function run() {
     await exec("raku", ["-V"]);
     endGroup();
   } catch (error2) {
-    setFailed(error2.message);
+    setFailed(error2 instanceof Error ? error2.message : String(error2));
   }
 }
 

@@ -1,7 +1,7 @@
 import * as core from "@actions/core";
 import * as exec from "@actions/exec";
+import * as os from "node:os";
 import * as installer from "./installer.js";
-import * as os from "os";
 
 export async function run(): Promise<void> {
   try {
@@ -18,7 +18,7 @@ export async function run(): Promise<void> {
     core.startGroup("raku -V");
     await exec.exec("raku", ["-V"]);
     core.endGroup();
-  } catch (error: any) {
-    core.setFailed(error.message);
+  } catch (error: unknown) {
+    core.setFailed(error instanceof Error ? error.message : String(error));
   }
 }

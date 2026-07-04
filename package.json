@@ -30,11 +30,11 @@
     "@actions/tool-cache": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^24.13.1",
+    "@types/node": "^24.13.2",
     "esbuild": "^0.28.1",
-    "prettier": "^3.8.3",
+    "prettier": "^3.9.4",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.9"
   },
   "engines": {
     "node": ">=24"

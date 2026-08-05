@@ -30,7 +30,7 @@
     "@actions/tool-cache": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^26.1.2",
+    "@types/node": "^24.13.3",
     "esbuild": "^0.28.1",
     "prettier": "^3.9.6",
     "typescript": "^7.0.2",

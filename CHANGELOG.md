@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.15.0 - 2026-10-29
+
+* Update npm dependencies
+
 ## v1.14.0 - 2026-08-06
 
 * Update npm dependencies (https://github.com/Raku/setup-raku/pull/60, https://github.com/Raku/setup-raku/pull/61, https://github.com/Raku/setup-raku/pull/62)
